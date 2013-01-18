@@ -12,24 +12,33 @@
 </head>
 <body>
 <div class="row">
-    <div class="span12">
-        <div class="item" data-bind="foreach: items">
-            <ul>
-                <li>
-                    <a data-bind="attr: {href: book, title: book}"/>Book link</a>
-                </li>
-                <li>
-                    Location is: <span data-bind="text: $data.item.title"></span>
-                </li>
-                <li>
-                    Location is: <span data-bind="text: location"></span>
-                </li>
-                <li>
-                    Status is: <span data-bind="text: status"></span>
-                </li>
-            </ul>
+    <div class="span1"></div>
+        <div class="span10">
+            <div class="well">
+                <em>Inventory Size: <span data-bind="text: items().length"></span></em>
+            </div>
+            <div data-bind="foreach: items">
+                <div class="well">
+                    <ul>
+                        <li>
+                            <a data-bind="attr: {href: book, title: book}"/>Book link</a>
+                        </li>
+                        <li>
+                            Title is: <span data-bind="text: $data.item.title"></span>
+                        </li>
+
+                        <li>
+                            Location is: <span data-bind="text: location"></span>
+                        </li>
+                        <li>
+                            Status is: <span data-bind="text: status"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
-    </div>
+    <div class="span1"></div>
 </div>
 
 <script src="example.js"></script>
