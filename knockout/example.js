@@ -12,9 +12,15 @@ function ItemListViewModel() {
     self.items = ko.observableArray([]);
 
     // Load initial state from server, convert it to Item instances, then populate self.items
-    $.getJSON("/inventory", function(allData) {
-        var mappedItems = $.map(allData, function(item) { return new Item(item) });
-        self.Items(mappedItems);
+    $.ajax({
+        url: "/inventory",
+        headers: {
+            'Accept': 'application/json'
+        },
+        success: function(data) {
+            var mappedItems = $.map(allData, function(item) { return new Item(item) });
+            self.Items(mappedItems);
+        }
     });
 }
 
