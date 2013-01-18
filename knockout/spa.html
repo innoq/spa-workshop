@@ -8,10 +8,9 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
 </head>
 <body>
-
-<ul data-bind="foreach: items, visible: items().length > 0">
+<ul data-bind="foreach: items">
     <li>
-        <a data-bind="attr {href: book, title: book}"/>Book link</a>
+        <a data-bind="attr: {href: book, title: book}"/>Book link</a>
     </li>
     <li>
         Location is: <span data-bind="text: location"></span>

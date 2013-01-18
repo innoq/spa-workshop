@@ -9,7 +9,7 @@ function Item(data) {
 function ItemListViewModel() {
     // Data
     var self = this;
-    self.items = ko.observableArray([]);
+    self.items = ko.observableArray();
 
     // Load initial state from server, convert it to Item instances, then populate self.items
     $.ajax({
@@ -18,10 +18,13 @@ function ItemListViewModel() {
             'Accept': 'application/json'
         },
         success: function(data) {
-            var mappedItems = $.map(allData, function(item) { return new Item(item) });
-            self.Items(mappedItems);
+            var mappedItems = $.map(data.items, function(item) { return new Item(item) });
+            self.items(mappedItems)
         }
     });
 }
 
-ko.applyBindings(new ItemListViewModel());
+
+
+var viewModel = window.viewModel = new ItemListViewModel();
+ko.applyBindings(viewModel);
