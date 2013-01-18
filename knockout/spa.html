@@ -3,22 +3,31 @@
 <head>
     <meta charset="utf-8">
     <title>My Knockout SPA</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="example.css"/>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
 </head>
 <body>
-<ul data-bind="foreach: items">
-    <li>
-        <a data-bind="attr: {href: book, title: book}"/>Book link</a>
-    </li>
-    <li>
-        Location is: <span data-bind="text: location"></span>
-    </li>
-    <li>
-        Status is: <span data-bind="text: status"></span>
-    </li>
-</ul>
+<div class="row">
+    <div class="span12">
+        <div class="item" data-bind="foreach: items">
+            <ul>
+                <li>
+                    <a data-bind="attr: {href: book, title: book}"/>Book link</a>
+                </li>
+                <li>
+                    Location is: <span data-bind="text: location"></span>
+                </li>
+                <li>
+                    Status is: <span data-bind="text: status"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <script src="example.js"></script>
 </body>
