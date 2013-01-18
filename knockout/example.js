@@ -4,6 +4,12 @@ function InventoryItem(data) {
     this.location = ko.observable(data.owner);
     this.status = ko.observable(data.status);
     this.owner = ko.observable(data.owner);
+
+    this.item = ko.observable(
+        itemDetails(data.book)
+    );
+
+    console.log("");
 }
 
 function Item(data) {
@@ -43,7 +49,9 @@ function itemDetails(itemUri) {
             'Accept': 'application/json'
         },
         success: function(data) {
-            var mappedItems = $.map(data, function(item) { return new Item(item) });
+            var i =  new Item(data);
+            console.log(i);
+            return i;
         }
     });
 }
