@@ -1,12 +1,21 @@
 // Here's my data model
-var ViewModel = function(first, last) {
-	this.firstName = ko.observable(first);
-	this.lastName = ko.observable(last);
+function Item(data) {
+    this.book = ko.observable(data.book);
+    this.location = ko.observable(data.owner);
+    this.status = ko.observable(data.status);
+    this.owner = ko.observable(data.owner);
+}
 
-	this.fullName = ko.computed(function() {
-		// Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
-		return this.firstName() + " " + this.lastName();
-	}, this);
-};
+function ItemListViewModel() {
+    // Data
+    var self = this;
+    self.items = ko.observableArray([]);
 
-ko.applyBindings(new ViewModel("Planet", "Earth")); // This makes Knockout get to work
+    // Load initial state from server, convert it to Item instances, then populate self.items
+    $.getJSON("/inventory", function(allData) {
+        var mappedItems = $.map(allData, function(item) { return new Item(item) });
+        self.Items(mappedItems);
+    });
+}
+
+ko.applyBindings(new ItemListViewModel());

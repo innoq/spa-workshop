@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Knockout SPA</title>
+    <link rel="stylesheet" href="example.css"/>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+
+<ul data-bind="foreach: items, visible: items().length > 0">
+    <li>
+        <a data-bind="attr {href: book, title: book}"/>Book link</a>
+    </li>
+    <li>
+        Location is: <span data-bind="text: location"></span>
+    </li>
+    <li>
+        Status is: <span data-bind="text: status"></span>
+    </li>
+</ul>
+
+<script src="example.js"></script>
+</body>
+</html>
